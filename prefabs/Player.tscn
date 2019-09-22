@@ -4,11 +4,11 @@
 [ext_resource path="res://scenes/Fireball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/characters/vigilante/Vigilant.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 13.4083
 height = 30.7604
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "vigilant_idle"
 length = 0.9
 loop = true
@@ -42,7 +42,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 7, 6 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "vigilant_walk_shoot"
 length = 0.5
 tracks/0/type = "value"
@@ -75,7 +75,7 @@ frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.78668, 2.36887 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -84,9 +84,9 @@ smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/vigilant_idle = SubResource( 5 )
+anims/vigilant_idle = SubResource( 2 )
 anims/vigilant_walk = SubResource( 3 )
-anims/vigilant_walk_shoot = SubResource( 6 )
+anims/vigilant_walk_shoot = SubResource( 4 )
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.05

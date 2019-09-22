@@ -17,11 +17,11 @@ func _ready() :
 	$AnimationPlayer.play("idle")
 
 func _physics_process(delta):
-	if Vigilante.position.x+200 > position.x && Vigilante.position.x+35 < position.x:
+	if Vigilante.position.x+100 > position.x && Vigilante.position.x+35 < position.x:
 		vel.x = -50
 		$Sprite.set_flip_h(true)
 		$AnimationPlayer.play("walk")
-	elif Vigilante.position.x-200 < position.x && Vigilante.position.x-35 > position.x:
+	elif Vigilante.position.x-100 < position.x && Vigilante.position.x-35 > position.x:
 		vel.x = 50
 		$Sprite.set_flip_h(false)
 		$AnimationPlayer.play("walk")
