@@ -59,7 +59,8 @@ func update_directional_force():
 var motion = Vector2()
 
 func _ready() :
-	$AnimationPlayer.play("idle")
+	$Sprite.set_flip_h(true)
+	$AnimationPlayer.play("vigilant_idle")
 	
 
 
@@ -91,19 +92,25 @@ func _physics_process(delta) :
 	if Input.is_action_pressed("ui_right") :
 		is_walking = true
 		walking_right = true
-		$Sprite.set_flip_h(false)	
-		$AnimationPlayer.play("walk")
+		$Sprite.set_flip_h(true)
+		if Input.is_action_pressed("ui_select"):
+			$AnimationPlayer.play("vigilant_walk_shoot")
+		else:
+			$AnimationPlayer.play("vigilant_walk")
 		direction = 1
 		motion.x = current_speed * direction
 	elif Input.is_action_pressed("ui_left") :
-		$Sprite.set_flip_h(true)
-		$AnimationPlayer.play("walk")
+		$Sprite.set_flip_h(false)
+		if (shooting == true):
+			$AnimationPlayer.play("vigilant_walk_shoot")
+		else:
+			$AnimationPlayer.play("vigilant_walk")
 		is_walking = true
 		walking_right = false
 		direction = -1
 		motion.x = current_speed * direction
 	else :
-		$AnimationPlayer.play("idle")
+		$AnimationPlayer.play("vigilant_idle")
 		is_walking = false
 		motion.x = 0
 		
