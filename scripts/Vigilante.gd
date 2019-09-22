@@ -5,11 +5,12 @@ const GRAVITY = 40
 const SPEED = 250
 const JUMP_HEIGHT = -650
 const TELEPORT = 600
+const MAXHEALTH = 4
 
-var life = 4
 var is_walking = false
 var walking_right = true
 var direction = 1
+var health = 3
 
 # Dash
 var is_dashing = false
