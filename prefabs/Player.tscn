@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Vigilante.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Fireball.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Assets/characters/vigilante/Vigilant.png" type="Texture" id=3]
+[ext_resource path="res://scenes/Teleport_smoke.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/characters/vigilante/Vigilant.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 13.4083
@@ -79,13 +80,18 @@ position = Vector2( 511.064, 274.984 )
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 fireball_scene = ExtResource( 2 )
+teleport_smoke_scene = ExtResource( 3 )
 fireball_spawn_right_path = NodePath("fireball_right_spawn")
 fireball_spawn_left_path = NodePath("fireball_left_spawn")
+teleport_smoke_path = NodePath("teleport_smoke_spawn")
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 hframes = 12
 frame = 5
 
@@ -115,5 +121,8 @@ position = Vector2( 24.9561, 9.96338 )
 
 [node name="fireball_left_spawn" type="Position2D" parent="."]
 position = Vector2( -28.4256, 10.8426 )
+
+[node name="teleport_smoke_spawn" type="Position2D" parent="."]
+position = Vector2( -2.78049, 4.76654 )
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_DashCooldownTimer_timeout"]
