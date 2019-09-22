@@ -33,13 +33,16 @@ func _physics_process(delta) :
 
 
 func _on_Area2D_body_entered(body):
-	
 	if (body.get_name() != "Vigilante") :
 		collided = true
 		_movement = Vector2(0,0)
 		move_and_collide(_movement)
 		$Timer.start()
 	
-
+	if(body.get_name() != 'Parede' && body.get_name() != 'plataformas' && body.get_name() != 'NPC'):
+		if (body.ENEMY) :
+			body.life -= 1
+			if body.life == 0:
+				body.queue_free()
 func _on_Timer_timeout():
 		queue_free()

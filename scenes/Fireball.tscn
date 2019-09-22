@@ -7,7 +7,7 @@
 radius = 11.6183
 height = 12.4614
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "fireball_explosion"
 length = 0.3
 tracks/0/type = "value"
@@ -23,8 +23,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7, 8, 9 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fireball_idle"
+[sub_resource type="Animation" id=3]
 length = 0.7
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -59,8 +58,8 @@ rotation = 1.56275
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/fireball_explosion = SubResource( 3 )
-anims/fireball_idle = SubResource( 2 )
+anims/fireball_explosion = SubResource( 2 )
+anims/fireball_idle = SubResource( 3 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3

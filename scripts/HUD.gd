@@ -3,7 +3,7 @@ extends CanvasLayer
 onready var player = get_node("../Vigilante")
 
 const HEART_ROW_SIZE = 64
-const HEART_OFFSET = 16
+const HEART_OFFSET = 18
 
 func _ready():
 
@@ -24,12 +24,12 @@ func _process(delta):
 		
 		heart.position = Vector2(x,y)
 		
-		var last_heart = floor(player.health)
+		var last_heart = floor(player.health) - 1
 		if index > last_heart:
 			heart.frame = 2
 		if index == last_heart:
-			heart.frame = (player.health - last_heart) * 5
+			heart.frame = 0
 		if index < last_heart:
-			heart.frame = 3
+			heart.frame = 0
 	
 
