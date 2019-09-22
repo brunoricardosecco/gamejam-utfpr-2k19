@@ -5,11 +5,11 @@
 [ext_resource path="res://scenes/Teleport_smoke.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Assets/characters/vigilante/Vigilant.png" type="Texture" id=4]
 
-[sub_resource type="CapsuleShape2D" id=4]
+[sub_resource type="CapsuleShape2D" id=1]
 radius = 13.4083
 height = 30.7604
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "vigilant_idle"
 length = 0.9
 loop = true
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 1, 0 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=3]
 resource_name = "vigilant_idle_shoot"
 length = 0.3
 tracks/0/type = "value"
@@ -42,8 +42,7 @@ tracks/0/keys = {
 "values": [ 5, 4, 3, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "vigilant_walk"
+[sub_resource type="Animation" id=4]
 length = 0.9
 loop = true
 tracks/0/type = "value"
@@ -59,7 +58,7 @@ tracks/0/keys = {
 "values": [ 6, 7, 8, 7, 6 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "vigilant_walk_shoot"
 length = 0.5
 tracks/0/type = "value"
@@ -76,6 +75,7 @@ tracks/0/keys = {
 }
 
 [node name="Vigilante" type="KinematicBody2D"]
+position = Vector2( 0, -0.184025 )
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
@@ -96,7 +96,7 @@ frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.78668, 2.36887 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -105,15 +105,16 @@ smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/vigilant_idle = SubResource( 5 )
-anims/vigilant_idle_shoot = SubResource( 7 )
-anims/vigilant_walk = SubResource( 3 )
-anims/vigilant_walk_shoot = SubResource( 6 )
+anims/vigilant_idle = SubResource( 2 )
+anims/vigilant_idle_shoot = SubResource( 3 )
+anims/vigilant_walk = SubResource( 4 )
+anims/vigilant_walk_shoot = SubResource( 5 )
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.05
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 0.5
 
 [node name="fireball_right_spawn" type="Position2D" parent="."]
 position = Vector2( 24.9561, 9.96338 )

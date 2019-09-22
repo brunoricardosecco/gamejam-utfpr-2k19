@@ -3,7 +3,7 @@ extends KinematicBody2D
 const UP = Vector2(0, -1)
 const GRAVITY = 40
 const SPEED = 250
-const JUMP_HEIGHT = -650
+const JUMP_HEIGHT = -750
 const TELEPORT = 600
 const MAXHEALTH = 4
 
@@ -144,12 +144,14 @@ func _physics_process(delta) :
 		$DashCooldownTimer.start()
 		current_speed = dash_speed
 		$Sprite.visible = false
-		get_node("CollisionShape2D").disabled = true
+		motion.y = 0
+		set_collision_layer_bit(2, false);
 		
 	motion = move_and_slide(motion, UP)
 	
 func _on_DashTimer_timeout():
 	is_dashing = false
+	set_collision_layer_bit(1, true);
 	
 	
 func _on_DashCooldownTimer_timeout():

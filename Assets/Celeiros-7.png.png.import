@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/platforms.png-c7158020a8e218595acc508adecfdfea.stex"
+path="res://.import/Celeiros-7.png.png-925c8b33092c86c950bb34a9a1e42b76.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/platforms.png"
-dest_files=[ "res://.import/platforms.png-c7158020a8e218595acc508adecfdfea.stex" ]
+source_file="res://Assets/Celeiros-7.png.png"
+dest_files=[ "res://.import/Celeiros-7.png.png-925c8b33092c86c950bb34a9a1e42b76.stex" ]
 
 [params]
 
