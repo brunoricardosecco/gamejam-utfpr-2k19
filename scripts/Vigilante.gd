@@ -10,7 +10,7 @@ const MAXHEALTH = 4
 var is_walking = false
 var walking_right = true
 var direction = 1
-var health = 3
+var health = MAXHEALTH
 
 # Dash
 var is_dashing = false
