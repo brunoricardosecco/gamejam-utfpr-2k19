@@ -7,20 +7,39 @@ var _gravity = 0
 
 #movement
 var _movement = Vector2()
+var _direction
+var collided = false;
 
-func shoot(directional_force, gravity):
+func shoot(directional_force, gravity, direction):
 	_movement = directional_force
-	_gravity = gravity
+	_direction = direction
 	set_physics_process(true)
 	
 	
 func _physics_process(delta) :
 	_movement.x += delta
-	
+	if (_direction == 1):
+		if collided:
+			$AnimationPlayer.play("fireball_explosion")
+		else:
+			$AnimationPlayer.play("fireball_idle")
+	elif (_direction == -1):
+		$Sprite.set_flip_h(true)
+		if collided:
+			$AnimationPlayer.play("fireball_explosion")
+		else:
+			$AnimationPlayer.play("fireball_idle")
 	move_and_collide(_movement)
 
 
 func _on_Area2D_body_entered(body):
+	
 	if (body.get_name() != "Vigilante") :
-		queue_free()
+		collided = true
+		_movement = Vector2(0,0)
+		move_and_collide(_movement)
+		$Timer.start()
+	
 
+func _on_Timer_timeout():
+		queue_free()
