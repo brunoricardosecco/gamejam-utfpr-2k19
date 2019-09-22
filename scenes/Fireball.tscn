@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/Fireball.gd" type="Script" id=1]
+[ext_resource path="res://Assets/icon.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.8596, 8.13939 )
+
+[node name="Fireball" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 2 )
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_Area2D_area_shape_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_Area2D_body_shape_entered"]
