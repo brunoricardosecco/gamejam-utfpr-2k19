@@ -1,9 +1,5 @@
 extends KinematicBody2D
 
-onready var Vigilante = get_parent().get_node("Vigilante")
-
-var vel = Vector2(0,0)
-
 const UP = Vector2(0, -1)
 const GRAVITY = 40
 const SPEED = 250
