@@ -4,6 +4,10 @@ onready var Vigilante = get_parent().get_node("Vigilante")
 
 const SPEED = 50
 const FLOOR = Vector2(0,-1)
+const MAXLIFE = 3
+const ENEMY = true
+
+var life = MAXLIFE
 
 var vel = Vector2(0,0)
 #var velocity = Vector2()
