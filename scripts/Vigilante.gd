@@ -21,7 +21,7 @@ var dash_cooldown = false
 
 export (PackedScene) var fireball_scene
 
-export (float) var fireball_delay = 1
+export (float) var fireball_delay = 0.2
 var waited = 0
 
 #fireball spawn
@@ -93,7 +93,7 @@ func _physics_process(delta) :
 		is_walking = true
 		walking_right = true
 		$Sprite.set_flip_h(true)
-		if Input.is_action_pressed("ui_select"):
+		if (Input.is_action_pressed("ui_select") && shooting == false):
 			$AnimationPlayer.play("vigilant_walk_shoot")
 		else:
 			$AnimationPlayer.play("vigilant_walk")
@@ -101,7 +101,7 @@ func _physics_process(delta) :
 		motion.x = current_speed * direction
 	elif Input.is_action_pressed("ui_left") :
 		$Sprite.set_flip_h(false)
-		if (shooting == true):
+		if (Input.is_action_pressed("ui_select") && shooting == false):
 			$AnimationPlayer.play("vigilant_walk_shoot")
 		else:
 			$AnimationPlayer.play("vigilant_walk")
@@ -110,9 +110,19 @@ func _physics_process(delta) :
 		direction = -1
 		motion.x = current_speed * direction
 	else :
-		$AnimationPlayer.play("vigilant_idle")
-		is_walking = false
-		motion.x = 0
+		if(is_walking == false && Input.is_action_pressed("ui_select") && shooting == false):
+			$AnimationPlayer.play("vigilant_idle_shoot")
+			is_walking = false
+			motion.x = 0
+		else:
+			$AnimationPlayer.play("vigilant_idle")
+			is_walking = false
+			motion.x = 0
+		
+		
+		
+	
+		
 		
 	if is_on_floor() :
 		if Input.is_action_pressed("ui_up") :
@@ -149,6 +159,6 @@ func shoot():
 		fireball.set_global_position(get_node("fireball_right_spawn").get_global_position())
 	elif (direction == -1):
 		fireball.set_global_position(get_node("fireball_left_spawn").get_global_position())
-	fireball.shoot(directional_force, fireball_gravity)
+	fireball.shoot(directional_force, fireball_gravity, direction)
 	get_parent().add_child(fireball)
 	

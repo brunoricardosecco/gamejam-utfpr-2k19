@@ -9,11 +9,6 @@
 position = Vector2( 864, 32 )
 collision_layer = 1
 collision_mask = 0
-dash_speed = 4000
-fireball_delay = 1.0
-fireball_gravity = 5
-fireball_speed = 10
-fireball_angle = 360.0
 
 [node name="plataformas" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )

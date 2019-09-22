@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Vigilante.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Fireball.tscn" type="PackedScene" id=2]
@@ -23,6 +23,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "vigilant_idle_shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.0465212, 0.0948552, 0.143189, 0.188804, 0.236232 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 4, 3, 3, 4, 5 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -71,7 +87,7 @@ fireball_spawn_left_path = NodePath("fireball_left_spawn")
 scale = Vector2( 2, 2 )
 texture = ExtResource( 3 )
 hframes = 12
-frame = 3
+frame = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -2.78668, 2.36887 )
@@ -85,6 +101,7 @@ smoothing_speed = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/vigilant_idle = SubResource( 5 )
+anims/vigilant_idle_shoot = SubResource( 7 )
 anims/vigilant_walk = SubResource( 3 )
 anims/vigilant_walk_shoot = SubResource( 6 )
 
