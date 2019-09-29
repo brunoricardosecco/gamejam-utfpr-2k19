@@ -18,27 +18,27 @@ var grav = 1000
 var max_grav = 3000
 
 func _ready() :
-	$AnimationPlayer.play("idle")
+	$AnimationPlayer.play("tree_idle")
 
 func _physics_process(delta):
 	if Vigilante.position.x+100 > position.x && Vigilante.position.x+35 < position.x:
 		vel.x = -50
 		$Sprite.set_flip_h(true)
-		$AnimationPlayer.play("walk")
+		#$AnimationPlayer.play("walk")
 	elif Vigilante.position.x-100 < position.x && Vigilante.position.x-35 > position.x:
 		vel.x = 50
 		$Sprite.set_flip_h(false)
-		$AnimationPlayer.play("walk")
+		$AnimationPlayer.play("tree_walk")
 	else:
 		if (Vigilante.position.x+50 > position.x && Vigilante.position.x < position.x+50) || (Vigilante.position.x-50 < position.x && Vigilante.position.x > position.x-50):
 			$Sprite.set_flip_h(Vigilante.position.x-position.x<0)
 			vel.x = 0
-			$AnimationPlayer.play("idle")
+			$AnimationPlayer.play("tree_attack2")
 		else:
 			$Sprite.set_flip_h(direction==-1)
 			vel.x = SPEED * direction
 			
-			$AnimationPlayer.play("walk")
+			$AnimationPlayer.play("tree_walk")
 			
 			vel.y += grav * delta
 			

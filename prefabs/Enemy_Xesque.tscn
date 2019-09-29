@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
-[ext_resource path="res://Assets/characters/cow/cow.png" type="Texture" id=2]
+[ext_resource path="res://Assets/characters/tree.png" type="Texture" id=2]
+[ext_resource path="res://prefabs/tree_idle.tres" type="Animation" id=3]
+[ext_resource path="res://prefabs/tree_walk.tres" type="Animation" id=4]
+[ext_resource path="res://prefabs/tree_attack.tres" type="Animation" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 13.4083
 height = 30.7604
 
 [sub_resource type="Animation" id=2]
-resource_name = "idle"
-loop = true
+resource_name = "fghfyhg"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -17,10 +19,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 1, 0 ]
+"values": [ 1, 2 ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -28,7 +30,7 @@ resource_name = "walk"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath("../Enemy/Enemy7:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -41,6 +43,8 @@ tracks/0/keys = {
 }
 
 [node name="Enemy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -49,12 +53,18 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
-hframes = 8
+hframes = 9
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 4.99301, 2.7739 )
+position = Vector2( 0.282248, 3.09743 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 2 )
+"anims/New Anim" = ExtResource( 3 )
+anims/fghfyhg = SubResource( 2 )
+anims/idle = ExtResource( 4 )
+anims/tree_attack2 = ExtResource( 5 )
+anims/tree_idle = ExtResource( 3 )
+anims/tree_walk = ExtResource( 3 )
 anims/walk = SubResource( 3 )
